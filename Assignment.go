@@ -43,6 +43,7 @@ func CheckForIPv4(ip string) bool {
 		return false
 	}
 
+	ip += "."
 	var part string = ""
 	for i := 0; i < len(ip); i++ {
 		if ip[i]=='.' {
@@ -72,6 +73,7 @@ func CheckForIPv6(ip string) bool {
 		return false
 	}
 
+	ip += ":"
 	var part string = ""
 	for i := 0; i < len(ip); i++ {
 		if ip[i]==':' {
@@ -97,14 +99,15 @@ func main() {
 	for _, line := range result {
 		val1 = CheckForIPv4(line)
 		if val1 {
-			fmt.Println(line, " is a valid IPv4 address")
+			fmt.Println(line, "is a valid IPv4 address")
 		} else {
 			val1 = CheckForIPv6(line)
 			if val1 {
-				fmt.Println(line, " is a valid IPv6 address")
-			} else {
-				fmt.Println(line, " is not a valid IP address")
+				fmt.Println(line, "is a valid IPv6 address")
 			}
+		}
+		if !val1 {
+			fmt.Println(line, "is not a valid IP address")
 		}
 	}
 }
