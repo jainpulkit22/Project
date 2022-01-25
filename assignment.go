@@ -27,12 +27,12 @@ func Contents(filename string) ([]string) {
 	defer f.Close()
 
 	scanner := bufio.NewScanner(f)
-	var ipaddress []string
+	var ipAddress []string
 	for scanner.Scan() {
-		ipaddress = append(ipaddress, scanner.Text())
+		ipAddress = append(ipAddress, scanner.Text())
 	}
 	
-	return ipaddress
+	return ipAddress
 }
 
 // CheckForIPv4 checks whether the parsed string is
@@ -50,7 +50,7 @@ func CheckForIPv4(ip string) bool {
 			if len(part)==0 {
 				return false
 			}
-			num,err := strconv.ParseInt(part, 9, 32)
+			num,err := strconv.ParseInt(part, 10, 64)
 			if err!=nil {
 				return false
 			}
